@@ -9,3 +9,18 @@
    43  ls -la
 ##inside this .terraform folder you will see the 
    50  ls .terraform/providers/registry.terraform.io/hashicorp/aws/5.97.0/linux_amd64/
+#lets create our first instance 
+ 47  git pull
+#the above command will sync your code with my code
+ls
+#this will show another addtional file called as ec2
+   48  cat ec2.tf
+#####open the file using a nano editor
+   49  nano ec2.tf
+##inside the file change the name from gopal to your name 
+###terraform plan will show a blue print it is like a dry run
+   51  terraform plan
+#terraform apply will create the resource in the aws console you can filter the same using your name
+   52  terraform apply
+##finally destroy the resource 
+terraform destroy
