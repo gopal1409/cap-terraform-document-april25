@@ -1,0 +1,11 @@
+###lets clone my repo 
+ 36  git clone https://github.com/gopal1409/catp-terraform-manifest-may-25.git
+   37  cd catp-terraform-manifest-may-25/
+#once you clone the repo you can do ls and you will see the provider manifest file
+40  cat provider.tf 
+#then do terraform init
+   41  terraform init
+ ##this will create a .terraform folder
+   43  ls -la
+##inside this .terraform folder you will see the 
+   50  ls .terraform/providers/registry.terraform.io/hashicorp/aws/5.97.0/linux_amd64/
