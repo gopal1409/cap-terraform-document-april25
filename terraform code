@@ -47,7 +47,7 @@ git pull
 git stash
 git pull
 ###then open the file ec2. yml in nano or vi editro
-vi ec2.yml
+vi ec2.tf
 ###change the name to your name 
 ####do 
 terraform apply
