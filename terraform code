@@ -24,3 +24,19 @@ ls
    52  terraform apply
 ##finally destroy the resource 
 terraform destroy
+###
+#terraform plan will read all the tf file and give you an blu print what it is going to create
+terraform plan
+####this also show the blue print when i say yes it will create the resource and store those resource information inside a file terraform.tfstate
+ 56  terraform apply
+#if you dont want the interuption you can use auto approve
+   57  terraform apply --auto-approve
+   58  ls
+   59  cat terraform.tfstate
+#terraform destroy will read the tfstate file and going to destroy all the resource
+   60  terraform destroy
+   61  cat terraform.tfstate
+   62  ls
+#the previous state fill will be stored inside the backup file
+   63  cat terraform.tfstate.backup
+
