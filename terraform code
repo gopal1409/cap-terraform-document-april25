@@ -24,7 +24,8 @@ ls
    52  terraform apply
 ##finally destroy the resource 
 terraform destroy
-###
+###terraform validate this will do syntax validation
+terraform validate
 #terraform plan will read all the tf file and give you an blu print what it is going to create
 terraform plan
 ####this also show the blue print when i say yes it will create the resource and store those resource information inside a file terraform.tfstate
