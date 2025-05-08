@@ -3,6 +3,7 @@
   104  git pull
 ###then do git stash 
   git stash 
+git pull
   ###open ec2 tf file 
   vi ec2.tf
   ###where every you see a name gopal replace it with your name 
