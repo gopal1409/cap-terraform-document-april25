@@ -4,6 +4,11 @@
 ###then do git stash 
   git stash 
 git pull
+
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# ls
+app               ec2.tf       sg.tf              terraform.tfstate.backup
+ec2-varaibles.tf  provider.tf  terraform.tfstate
+
   ###open ec2 tf file 
   vi ec2.tf
   ###where every you see a name gopal replace it with your name 
