@@ -1,0 +1,26 @@
+#when you want to create resource with multiple object using a varaible type called as map 
+#we are going to create two instance both the instance will have different ami and different instance type 
+cd catp-terraform-manifest-may-25
+##
+git pull
+git stash
+git pull
+####now you will have two different file lets try to understand the variable file 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# ls
+app  ec2-varaibles.tf  ec2.tf  for-each-varibales.tf  for-eachec2.tf  output.tf  provider.tf  sg.tf  terraform.tfstate  terraform.tfstate.backup
+####
+cat for-each-varibales.tf
+#####
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# cat for-eachec2.tf
+##kindly try to read both the file line by line 
+vi for-eachec2.tf
+#change the gopal name to your name 
+##then do 
+terraform apply
+###once the instance get created very the same from the web console 
+Let’s break everything down:
+
+variable "instances" defines a map where each element represents an EC2 instance configuration. For instance, "amzlinux" and "ubuntu" are identifiers for these configurations, each specifying an AMI ID and an instance type.
+resource "aws_instance" "servers" uses for_each to iterate over each element in the var.instances map. For each element, it creates an EC2 instance with the specified AMI and instance type.
+each.key in this context refers to the key in the map (e.g., "amzlinux", "ubuntu"), which we use to uniquely name each instance with the Name tag.
+each.value.ami and each.value.instance_type access the nested values for each instance's configuration.
