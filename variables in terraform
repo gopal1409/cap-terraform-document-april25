@@ -17,3 +17,15 @@ ec2-varaibles.tf  provider.tf  terraform.tfstate
   ##where ever you see the name gopal change it to your name 
   ###then do terraform apply 
     ##verify the resource is created or not
+##lets display the public ip with output values 
+#this output values are stored in the tfstate file 
+  111  cat terraform.tfstate
+##we will filter the state file 
+ 108  cat terraform.tfstate | grep public_ip
+  109  cat terraform.tfstate | grep public_dns
+##after this do 
+git pull
+####then destroy 
+terraform destroy
+##lets re createase the resource
+terraform apply
