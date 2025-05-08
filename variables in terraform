@@ -1,0 +1,13 @@
+#login to your instance go inside this folder
+103  cd catp-terraform-manifest-may-25/
+  104  git pull
+###then do git stash 
+  git stash 
+  ###open ec2 tf file 
+  vi ec2.tf
+  ###where every you see a name gopal replace it with your name 
+  ##open the sg.tf file 
+  vi sg.tf 
+  ##where ever you see the name gopal change it to your name 
+  ###then do terraform apply 
+    ##verify the resource is created or not
