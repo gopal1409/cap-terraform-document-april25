@@ -1,0 +1,79 @@
+##login to your ec2 instance 
+ 174  cd catp-terraform-manifest-may-25/
+  175  git pull
+##if there is any git error
+git stash
+git pull
+#####once you got the code change the name of the instance to your name 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# vi ec2.tf
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25#
+###once change the name of the instance to your name 
+##lets add the backend config in the 1.provider.tf file 
+vi 1.provider.tf
+####modify the backend block change the name of the bucket to your name 
+backend "s3" {
+    bucket         = "gopal14099" #replace with your bucket name
+    key            = "prod/prod.tfstate"
+    region         = "us-east-1"
+    use_lockfile = true
+  }
+###we need to remove the local remote state information 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# ls -la
+total 88
+drwxr-xr-x  5 root root 4096 May 12 18:51 .
+drwx------ 12 root root 4096 May 12 18:47 ..
+drwxr-xr-x  8 root root 4096 May 12 18:51 .git
+-rw-r--r--  1 root root   31 May 12 18:51 .gitignore
+drwxr-xr-x  4 root root 4096 May  9 20:49 .terraform
+-rw-r--r--  1 root root 1406 May  7 18:33 .terraform.lock.hcl
+-rw-r--r--  1 root root  524 May 12 18:51 1.provider.tf
+-rw-r--r--  1 root root  403 May 12 18:41 2.generic-varaibles.tf
+-rw-r--r--  1 root root  542 May 12 18:40 3.vpc-varaibles.tf
+-rw-r--r--  1 root root  129 May 12 18:42 4.local.tf
+-rw-r--r--  1 root root  367 May 12 18:40 5.vpc.tf
+drwxr-xr-x  2 root root 4096 May  7 21:08 app
+-rw-r--r--  1 root root  373 May 12 18:40 ec2-varaibles.tf
+-rw-r--r--  1 root root  950 May 12 18:42 ec2.tf
+-rw-r--r--  1 root root  406 May  9 20:45 for-each-varibales.tf
+-rw-r--r--  1 root root  184 May  9 20:45 for-eachec2.tf
+-rw-r--r--  1 root root  236 May  8 21:01 output.tf
+-rw-r--r--  1 root root  910 May  8 21:01 sg.tf
+-rw-r--r--  1 root root  182 May 12 18:45 terraform.tfstate
+-rw-r--r--  1 root root 8404 May 12 18:45 terraform.tfstate.backup
+#remove the terraform.tfstate
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# rm terraform.tfstate
+#remove the terraform.tfstate.backup
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# rm terraform.tfstate.backup
+#remove the .teraform folder
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# rm -rf .terraform
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# ls -la
+###better to remove it 
+####lets agains do terraform init it will show that successfully asign s3 as backend
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# terraform init
+Initializing the backend...
+
+Successfully configured the backend "s3"! Terraform will automatically
+use this backend unless the backend configuration change
+###lets do terraform apply
+terraform apply 
+#########################
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# ls -la
+total 72
+drwxr-xr-x  5 root root 4096 May 12 18:54 .
+drwx------ 12 root root 4096 May 12 18:47 ..
+drwxr-xr-x  8 root root 4096 May 12 18:51 .git
+-rw-r--r--  1 root root   31 May 12 18:51 .gitignore
+drwxr-xr-x  3 root root 4096 May 12 18:54 .terraform
+-rw-r--r--  1 root root 1406 May  7 18:33 .terraform.lock.hcl
+-rw-r--r--  1 root root  524 May 12 18:51 1.provider.tf
+-rw-r--r--  1 root root  403 May 12 18:41 2.generic-varaibles.tf
+-rw-r--r--  1 root root  542 May 12 18:40 3.vpc-varaibles.tf
+-rw-r--r--  1 root root  129 May 12 18:42 4.local.tf
+-rw-r--r--  1 root root  367 May 12 18:40 5.vpc.tf
+drwxr-xr-x  2 root root 4096 May  7 21:08 app
+-rw-r--r--  1 root root  373 May 12 18:40 ec2-varaibles.tf
+-rw-r--r--  1 root root  950 May 12 18:42 ec2.tf
+-rw-r--r--  1 root root  406 May  9 20:45 for-each-varibales.tf
+-rw-r--r--  1 root root  184 May  9 20:45 for-eachec2.tf
+-rw-r--r--  1 root root  236 May  8 21:01 output.tf
+-rw-r--r--  1 root root  910 May  8 21:01 sg.tf
