@@ -1,0 +1,59 @@
+##first lets delete the infrastructure we created earlier 
+catp-terraform-manifest-may-25
+terraform destroy 
+###then do git 
+git pull
+git stash
+git pull
+##modify the ec2 variables files 
+ vi ec2-varaibles.tf
+#change the name from gopal to your instance int he instance_tag
+###once done now if i do terraform apply 
+#lets first check all the workspace 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# terraform workspace list
+* default
+##you can see the default workspace 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# terraform apply
+'###if you look into the instance tag which is the combination of your default workspace
+ + tags                                 = {
+          + "Name" = "gopal-ec2-default"
+        }
+      + tags_all                             = {
+          + "Name" = "gopal-ec2-default"
+        }
+
+###lets create the resource once create lets create a new workspace called as test 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# terraform workspace new test
+Created and switched to workspace "test"!
+
+You're now on a new, empty workspace. Workspaces isolate their state,
+so if you run "terraform plan" Terraform will not see any existing state
+for this configuration.
+#####if you check the new workspace the pointer is in test workspace 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# terraform workspace list
+  default
+* test
+##lets apply it and see that similar infra it will create or not 
+terraform apply
+###if you look into the tag 
+  + tags                                 = {
+          + "Name" = "gopal-ec2-test"
+        }
+      + tags_all                             = {
+          + "Name" = "gopal-ec2-test"
+##lets apply it
+#once applied go to aws console check for your instance using the search bar you will see there are two instance created one is default another is test 
+####go to the s3 bucket and see there are two differnet manifest file also 
+#once you verify both the instance 
+lets see how to terminate those instances 
+217  terraform workspace list
+#this will show that you are in test workspace as the * is pointing 
+terraform destroy
+##once destroyed go to the aws console and check the instance with test as tag is deleted 
+#lets delete the instance from the default workspace also 
+  terraform workspace list
+  219  terraform workspace select default
+##this will delete the instance from the default workspace
+  220  terraform destroy --auto-approve
+##kindly go to aws console and verify the same 
+
