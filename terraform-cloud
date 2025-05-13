@@ -24,3 +24,11 @@ Date:   Tue May 13 18:39:27 2025 +0000
 
     terraform code
 root@ip-172-31-28-62:~/catp-terraform-manifest-may-25#
+
+#to upload the code in github we will use the ssh key 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# ssh-keygen -t rsa
+###just press enter enter it will generate the ssh key 
+##you will see the public key location 
+##run the cat command 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# cat /root/.ssh/id_rsa.pub
+###copy the public key 
