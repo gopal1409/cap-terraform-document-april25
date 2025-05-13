@@ -1,0 +1,5 @@
+241  vi ec2-varaibles.tf
+###in the instance tag you need to change the name of the tag value 
+  242  git add .
+  243  git commit -m  "terraform tag changes"
+  244  git push origin master
