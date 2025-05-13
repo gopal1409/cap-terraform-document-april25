@@ -1,0 +1,26 @@
+###once login to the system 
+sudo -i
+#######
+root@ip-172-31-28-62:~# cd catp-terraform-manifest-may-25/
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# ls
+1.provider.tf  2.generic-varaibles.tf  3.vpc-varaibles.tf  4.local.tf  5.vpc.tf  app  ec2-varaibles.tf  ec2.tf  for-each-varibales.tf  for-eachec2.tf  output.tf  sg.tf
+###we will create some global varaibles in git to identify the version kindly change name and email id with your name and email id 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# git config --global user.name "gopal"
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# git config --global user.email "gopal1409@gmail.com"
+##the above mentioned varAible is from your version control to identify who has send the code. 
+##now currently we have gopal version control information. 
+##lets remove it
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# rm -rf .git
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# git status
+fatal: not a git repository (or any of the parent directories): .git
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# git init
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# git add .
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# git commit -m "terraform code"
+#git log will show that my version in my local system is created 
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25# git log
+commit 27f33557ad46c8af8e543fb0c4a261edfb60d846 (HEAD -> master)
+Author: gopal <gopal1409@gmail.com>
+Date:   Tue May 13 18:39:27 2025 +0000
+
+    terraform code
+root@ip-172-31-28-62:~/catp-terraform-manifest-may-25#
